@@ -17,7 +17,7 @@ function App() {
   const [todos, setTodos] = useState<Todo[]>([]); //список задач
   const [categories, setCategories] = useState<string[]>([]); //список категорій
   const [selectedCategory, setSelectedCategory] = useState("All"); //обраний фільтр (за замовчуванням - всі категорії)
-  const [loading, setLoading] = useState(false);//завантаження
+  const [loading, setLoading] = useState(true);//завантаження
   const [error, setError] = useState(""); //помилки
 
   //SNACKBAR
@@ -35,7 +35,7 @@ function App() {
   //функція, яка завантажує задачі
   const fetchTodos = async () => {
     try {
-      setLoading(true);//показуємо завантаження
+      // setLoading(true);//показуємо завантаження
       const url =
         selectedCategory === "All"
           ? "/todos"
