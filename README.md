@@ -6,33 +6,33 @@ Small full-stack Todo application built as a test task.
 
 ### Frontend
 
-* React
-* TypeScript
-* Vite
-* Axios
-* React Hook Form
-* MUI Snackbar
+- React
+- TypeScript
+- Vite
+- Axios
+- React Hook Form
+- MUI Snackbar
 
 ### Backend
 
-* Node.js
-* Express.js
-* SQLite
-* better-sqlite3
+- Node.js
+- Express.js
+- SQLite
+- better-sqlite3
 
 ---
 
 # Features
 
-* Create tasks with categories
-* Filter tasks by category
-* Mark tasks as completed
-* Delete tasks
-* Undo delete / complete actions with Snackbar
-* Maximum 5 tasks per category
-* Loading state
-* Error handling
-* Empty state UI
+- Create tasks with categories
+- Filter tasks by category
+- Mark tasks as completed
+- Delete tasks
+- Undo delete / complete actions with Snackbar
+- Maximum 5 tasks per category
+- Loading state
+- Error handling
+- Empty state UI
 
 ---
 
@@ -74,7 +74,7 @@ Request body:
 
 ---
 
-## PATCH /todos/:id
+## PATCH /todos/
 
 Update completed status.
 
@@ -88,7 +88,7 @@ Request body:
 
 ---
 
-## DELETE /todos/:id
+## DELETE /todos/\:id
 
 Delete todo.
 
@@ -102,9 +102,9 @@ Get available categories.
 
 # Business Rules
 
-* Each category can contain maximum 5 tasks
-* If limit exceeded → backend returns 400 error
-* Undo action is available for 5 seconds
+- Each category can contain maximum 5 tasks
+- If limit exceeded → backend returns 400 error
+- Undo action is available for 5 seconds
 
 ---
 
@@ -113,7 +113,7 @@ Get available categories.
 ## 1. Clone repository
 
 ```bash
-git clone YOUR_REPOSITORY_LINK
+git clone https://github.com/anushtaieva/todo-app.git
 ```
 
 ---
