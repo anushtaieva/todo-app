@@ -31,11 +31,6 @@ function App() {
     timer: any;
   } | null>(null); //зберігання таски, яка скоро видалеться
 
-  const [pendingComplete, setPendingComplete] = useState<{
-    id: number;
-    timer: any;
-  } | null>(null);//зберігання таски, яка скоро стане виконається
-
   //FETCH TODOS
   //функція, яка завантажує задачі
   const fetchTodos = async () => {
@@ -89,10 +84,8 @@ function App() {
       await api.patch(`/todos/${todo.id}`, { completed: newValue });
       fetchTodos();
     }, 5000);
-    setPendingComplete({ id: todo.id, timer });
     showSnackbar("Status will be updated", () => {
       clearTimeout(timer);
-      setPendingComplete(null);
     });
   };
 
