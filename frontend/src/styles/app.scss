@@ -1,0 +1,459 @@
+// ─────────────────────────────────────────────
+// app.scss  —  Todo App styles
+// ─────────────────────────────────────────────
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+// ── Variables ──────────────────────────────
+$bg:           #f5f2ee;
+$surface:      #ffffff;
+$border:       #e8e3dc;
+$border-light: #d4cfc8;
+
+$text-dark:    #2c2417;
+$text-mid:     #888888;
+$text-muted:   #aaaaaa;
+
+$accent:       #b07d4a;
+$accent-light: #fdf4ec;
+$accent-border: #f0ddc8;
+
+$danger:       #d45454;
+$danger-light: #fdf0f0;
+
+$green:        #6ab06a;
+$purple-muted: #a0a0b8;
+
+$radius-sm:    6px;
+$radius-md:    10px;
+$radius-lg:    14px;
+$radius-xl:    16px;
+$radius-pill:  20px;
+
+$font-sans:    'DM Sans', sans-serif;
+$font-serif:   'DM Serif Display', serif;
+
+$shadow-sm:    0 1px 4px rgba(0, 0, 0, 0.06);
+$shadow-md:    0 4px 16px rgba(0, 0, 0, 0.09);
+
+// ── Reset ──────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: $bg;
+  font-family: $font-sans;
+}
+
+// ── Loading screen ─────────────────────────
+.loading-screen {
+  min-height: 100vh;
+  background: $bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid $border;
+  border-top-color: $accent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+// ── App shell ──────────────────────────────
+.app {
+  min-height: 100vh;
+  background: $bg;
+  padding-bottom: 80px;
+}
+
+// ── Header ─────────────────────────────────
+.app-header {
+  background: $bg;
+  border-bottom: 1px solid $border;
+  padding: 36px 48px 28px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+
+  &__title {
+    font-family: $font-serif;
+    font-size: 34px;
+    font-weight: 400;
+    color: $text-dark;
+    margin: 0 0 4px;
+    letter-spacing: -0.02em;
+  }
+
+  &__meta {
+    margin: 0;
+    font-size: 14px;
+    color: $text-muted;
+    font-weight: 300;
+  }
+}
+
+// ── Body ───────────────────────────────────
+.app-body {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 36px 48px;
+}
+
+// ── Error banner ───────────────────────────
+.error-banner {
+  background: $danger-light;
+  border: 1.5px solid #f5c0c0;
+  color: #c04040;
+  border-radius: $radius-md;
+  padding: 12px 18px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+// ── Filter row ─────────────────────────────
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+
+  &__label {
+    font-size: 13px;
+    color: #bbbbbb;
+    font-weight: 300;
+    margin-right: 4px;
+  }
+}
+
+.filter-chip {
+  background: transparent;
+  border: 1.5px solid $border-light;
+  color: $text-mid;
+  border-radius: $radius-pill;
+  padding: 6px 18px;
+  font-family: $font-sans;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+  font-weight: 400;
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+  }
+
+  &--active {
+    background: $accent;
+    border-color: $accent;
+    color: #fff;
+    font-weight: 500;
+  }
+}
+
+// ── Form wrapper ───────────────────────────
+.todo-form-wrap {
+  background: $surface;
+  border-radius: $radius-xl;
+  padding: 28px 28px 24px;
+  margin-bottom: 32px;
+  box-shadow: $shadow-sm;
+
+  &__title {
+    font-family: $font-serif;
+    font-size: 18px;
+    color: $text-dark;
+    margin: 0 0 20px;
+    font-weight: 400;
+  }
+}
+
+// ── TodoForm ───────────────────────────────
+.todo-form {
+  &__row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+
+    @media (max-width: 540px) {
+      flex-direction: column;
+    }
+  }
+}
+
+.todo-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &--grow {
+    flex: 1;
+  }
+}
+
+.todo-form-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $text-muted;
+}
+
+.todo-form-input {
+  border: 1.5px solid $border;
+  border-radius: $radius-md;
+  padding: 11px 14px;
+  font-family: $font-sans;
+  font-size: 15px;
+  color: $text-dark;
+  background: #faf9f7;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+  width: 100%;
+
+  &:focus {
+    border-color: $accent;
+    box-shadow: 0 0 0 3px rgba(176, 125, 74, 0.12);
+    background: $surface;
+  }
+
+  &::placeholder {
+    color: #c0bbb4;
+  }
+
+  &--error {
+    border-color: #e09090;
+    background: #fff8f8;
+
+    &:focus {
+      border-color: $danger;
+      box-shadow: 0 0 0 3px rgba(212, 84, 84, 0.1);
+    }
+  }
+}
+
+.todo-form-select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.todo-form-select {
+  border: 1.5px solid $border;
+  border-radius: $radius-md;
+  padding: 11px 38px 11px 14px;
+  font-family: $font-sans;
+  font-size: 15px;
+  color: $text-dark;
+  background: #faf9f7;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  width: 100%;
+
+  &:focus {
+    border-color: $accent;
+    box-shadow: 0 0 0 3px rgba(176, 125, 74, 0.12);
+    background: $surface;
+  }
+
+  // greyed-out placeholder option
+  option[value=""] {
+    color: #c0bbb4;
+  }
+}
+
+.todo-form-select-arrow {
+  position: absolute;
+  right: 12px;
+  font-size: 12px;
+  color: $text-muted;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.todo-form-error {
+  font-size: 12px;
+  color: $danger;
+  margin-top: 2px;
+}
+
+.todo-form-submit {
+  width: 100%;
+  background: $text-dark;
+  color: #f5f0e8;
+  border: none;
+  border-radius: $radius-md;
+  padding: 13px 24px;
+  font-family: $font-sans;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.1s;
+
+  &:hover {
+    background: #3d3220;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// ── Todo list ──────────────────────────────
+.todo-list {
+  &__empty {
+    text-align: center;
+    padding: 56px 0;
+    color: #cccccc;
+    font-size: 16px;
+    font-style: italic;
+    font-family: $font-serif;
+  }
+}
+
+// ── Todo card ──────────────────────────────
+.todo-card {
+  background: $surface;
+  border-radius: $radius-lg;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: $shadow-sm;
+  transition: opacity 0.4s, transform 0.25s, box-shadow 0.18s;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+
+  &--pending-delete {
+    opacity: 0.35;
+    transform: translateX(6px);
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__text {
+    margin: 0 0 5px;
+    font-size: 17px;
+    line-height: 1.45;
+    color: $text-dark;
+    font-weight: 400;
+    transition: color 0.25s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &--done {
+      color: #bbbbbb;
+      text-decoration: line-through;
+      text-decoration-color: #cccccc;
+    }
+  }
+
+  &__category {
+    display: inline-block;
+    font-size: 12px;
+    color: $accent;
+    background: $accent-light;
+    border: 1px solid $accent-border;
+    border-radius: $radius-sm;
+    padding: 2px 9px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  &__status {
+    font-size: 13px;
+    color: $purple-muted;
+    font-weight: 500;
+    min-width: 52px;
+    text-align: center;
+    flex-shrink: 0;
+
+    &--done {
+      color: $green;
+    }
+  }
+}
+
+// ── Checkbox ───────────────────────────────
+.todo-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid $border-light;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  transition: border-color 0.18s, background 0.18s;
+  position: relative;
+
+  &:checked {
+    background: $accent;
+    border-color: $accent;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+      border: 2px solid #fff;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+  }
+
+  &:hover:not(:checked) {
+    border-color: $accent;
+  }
+}
+
+// ── Delete button ──────────────────────────
+.delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #cccccc;
+  padding: 6px;
+  border-radius: 8px;
+  font-size: 22px;
+  line-height: 1;
+  transition: color 0.18s, background 0.18s;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: $danger;
+    background: $danger-light;
+  }
+}
