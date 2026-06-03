@@ -142,7 +142,6 @@ function App() {
             <button
               key={cat}
               className={`filter-chip${selectedCategory === cat ? " filter-chip--active" : ""}`}
-              {/* ── за кликом змінюємо фільтр ── */}
               onClick={() => setSelectedCategory(cat)}
             >
               {cat}

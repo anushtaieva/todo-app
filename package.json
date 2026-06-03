@@ -5,6 +5,7 @@
     "@mui/material": "^9.0.1"
   },
   "devDependencies": {
-    "sass": "^1.100.0"
+    "sass": "^1.100.0",
+    "sass-embedded": "^1.100.0"
   }
 }
