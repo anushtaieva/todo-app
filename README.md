@@ -1,6 +1,7 @@
 # Todo App
 
 Small full-stack Todo application built as a test task.
+DEPLOYED PROJECT IS AVAILABLE VIA LINK https://todo-app-delta-ashy-33.vercel.app
 
 ## Tech Stack
 
